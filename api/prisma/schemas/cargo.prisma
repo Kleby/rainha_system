@@ -1,0 +1,36 @@
+model Cargo {
+    id                  Int     @id @default(autoincrement())
+    nome                String
+    descontoPorcentagem Decimal @db.Decimal(5, 2)
+
+    usuarios Usuario[]
+
+    //Permissões para Tela PEDIDO
+    permiteAdicionarPedido            Boolean @default(true) 
+    permiteCancelarPedido             Boolean @default(true)
+    permiteAlterarPedido              Boolean @default(true)
+    permiteDescontoPedido             Boolean @default(true)
+    permiteAcrescimoPedido            Boolean @default(true)
+    permiteDescontoMaiorPedido        Boolean @default(true)
+    permiteAplicaDescontroPedido      Boolean @default(true)
+    permiteAlterarVendedorPedido      Boolean @default(true)
+    permiteAlterarClientePedido       Boolean @default(true)
+    permiteAlterarOperacaoPedido      Boolean @default(true)
+    permiteExcluirItemPedido          Boolean @default(true)
+    permiteAplicaDescontroItemPedido  Boolean @default(true)
+    permiteAlterarQtdItemPedido       Boolean @default(true)
+    permiteVisualizarVendedoresPedido Boolean @default(true)
+    permiteALterarVendedoresPedido    Boolean @default(true)
+
+    //Permissões para Tela de FATURAMENTO
+    permiteAdicionarFatura  Boolean @default(true)
+    permiteCancelarFatura   Boolean @default(true)
+    permiteAlterarFatura    Boolean @default(true)
+    permiteDescontoFatura   Boolean @default(true)
+    permiteAcrescimoFatura  Boolean @default(true)
+    permiteRenegociarFatura Boolean @default(true)
+
+    //Permissões para Tela USUARIO
+    permiteAdicionarUsuario Boolean @default(true)
+    permiteAlterarUsuario   Boolean @default(true)
+}

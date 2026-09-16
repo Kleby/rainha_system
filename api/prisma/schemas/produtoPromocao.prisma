@@ -1,0 +1,12 @@
+model ProdutoPromocao {
+    id               Int     @id @default(autoincrement())
+    precoPromocional Decimal @db.Decimal(10, 2)
+    quantidadeMinima Int     @default(1)
+
+    promocaoId Int      @unique
+    promocao   Promocao @relation(fields: [promocaoId], references: [id])
+    produtoId  Int      @unique
+    produto    Produto  @relation(fields: [produtoId], references: [id])
+
+    
+}

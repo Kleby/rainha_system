@@ -1,0 +1,11 @@
+model ItemPedido {
+    quantidade Int     @default(1)
+    precoItem  Decimal @db.Decimal(10, 2)
+    
+    pedidoId   Int
+    pedido     Pedido  @relation(fields: [pedidoId], references: [id])
+    produtoId  Int
+    produto    Produto @relation(fields: [produtoId], references: [id])
+
+    @@id([pedidoId, produtoId])
+}

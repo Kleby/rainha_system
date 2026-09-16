@@ -1,0 +1,8 @@
+model ProdutoEstoque {
+    estoqueId Int @unique  
+    estoque   Estoque @relation(fields: [estoqueId], references: [id])
+    produtoId  Int @unique   
+    produto    Produto  @relation(fields: [produtoId], references: [id])
+    quantidade Decimal  @db.Decimal(10,2)
+    @@id([estoqueId, produtoId])
+}

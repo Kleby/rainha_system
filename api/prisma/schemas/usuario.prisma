@@ -1,0 +1,11 @@
+model Usuario {
+    id           Int      @id @default(autoincrement())
+    usuario      String   @unique
+    senhaHash    String
+    cargoId      Int      
+    cargo        Cargo    @relation(fields: [cargoId], references: [id])
+    pessoa       Pessoa   @relation(fields: [pessoaId], references: [id])
+    pessoaId     Int      @unique 
+    vendas       Pedido[] @relation("VendedorPedido")
+    faturamentos Pedido[] @relation("FaturadorPedido")
+}

@@ -1,0 +1,17 @@
+
+enum Documento {
+    CPF
+    CNPJ
+}
+
+model Cliente {
+    id        Int       @id @default(autoincrement())
+    documento Documento @unique @default(CPF) //CPF ou CNPJ
+    numero    String
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @default(now())
+    pessoa    Pessoa    @relation(fields: [pessoaId], references: [id])
+    pessoaId  Int       @unique
+
+    pedidos Pedido[]
+}

@@ -1,0 +1,16 @@
+model Produto {
+    id               Int      @id @default(autoincrement())
+    nome             String   @unique
+    sku              String   
+    preco            Decimal  @db.Decimal(10, 2)
+    custoReal        Decimal  @db.Decimal(10, 2)
+    custoOperacional Decimal  @db.Decimal(10, 2)
+    custoUnitario    Decimal  @db.Decimal(10, 2)
+    emPromocao       Boolean  @default(false)
+    createdAt        DateTime? @default(now())
+    updatedAt        DateTime? @default(now())
+    estoqueId        Int
+    itensPedido       ItemPedido[] 
+    produtosPromocoes ProdutoPromocao[]
+    produtoEstoque     ProdutoEstoque[]
+}

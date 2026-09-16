@@ -1,0 +1,42 @@
+enum StatusPedido {
+    ABERTO
+    FECHADO
+    FATURADO
+    CANCELADO
+}
+enum PlanoPagamento{
+    A_VISTA
+    A_PLAZO
+    CARTAO_DEBITO
+    CARTAO_CREDITO
+    BOLETO
+    PIX
+}
+
+model Pedido {
+    id        Int          @id @default(autoincrement())
+    status    StatusPedido @default(ABERTO)
+    subtotal  Decimal      @db.Decimal(10, 2)
+    desconto  Decimal      @db.Decimal(10, 2)
+    total     Decimal      @db.Decimal(10, 2)
+    createdAt DateTime     @default(now())
+    updatedAt DateTime     @default(now())
+
+    itens         ItemPedido[]
+    clienteId     Int          
+    cliente       Cliente      @relation(fields: [clienteId], references: [id])
+    vendedorId    Int          
+    vendedor      Usuario      @relation("VendedorPedido", fields: [vendedorId], references: [id])
+    faturadoPorId Int?         
+    faturadoPor   Usuario?      @relation("FaturadorPedido", fields: [faturadoPorId], references: [id])
+    estaFaturado    Boolean @default(false) 
+    faturadoEm  DateTime? 
+    estaCancelado   Boolean?  @default(false) 
+    canceladoEm  DateTime? 
+
+    planoPagamento  PlanoPagamento @default(A_VISTA)
+
+    operacaoId  Int 
+    operacao    Operacao    @relation(fields: [operacaoId], references: [id])
+    
+}
