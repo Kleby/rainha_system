@@ -30,4 +30,18 @@ export const produtoService = {
         }
         return existsProduto;
     },
+    async remover(id: number){
+        const existente = produtoRepository.buscarPorId(id);
+        if(!existente) {
+            throw new AppError("Produto não encontardo", 404);
+        }
+        return await produtoRepository.remover(id);
+    },
+    async atualizar(id: number, produto:IProduto){
+        const existente = await produtoRepository.buscarPorId(id);
+        if(!existente){
+            throw new AppError("Produto não encontrado!", 404);
+        }
+        return produtoRepository.atualizar(id, produto);
+    }
 }
