@@ -20,7 +20,7 @@ model Pedido {
     desconto  Decimal      @db.Decimal(10, 2)
     total     Decimal      @db.Decimal(10, 2)
     createdAt DateTime     @default(now())
-    updatedAt DateTime     @default(now())
+    updatedAt DateTime     @updatedAt
 
     itens         ItemPedido[]
     clienteId     Int          

@@ -1,9 +1,10 @@
-
-model Operacao{
-    id  Int @id @default(autoincrement())
-    nome    String
-    podeReceber Boolean @default(false)
-    aplicaDesconto  Boolean @default(false)
-    podeEstornar    Boolean @default(false)
-    pedidos Pedido[]
+model Operacao {
+    id             Int      @id @default(autoincrement())
+    nome           String
+    podeReceber    Boolean  @default(false)
+    aplicaDesconto Boolean  @default(false)
+    podeEstornar   Boolean  @default(false)
+    pedidos        Pedido[]
+    createdAt      DateTime @default(now())
+    updatedAt      DateTime @updatedAt
 }

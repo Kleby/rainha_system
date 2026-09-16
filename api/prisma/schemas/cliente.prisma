@@ -9,7 +9,7 @@ model Cliente {
     documento Documento @unique @default(CPF) //CPF ou CNPJ
     numero    String
     createdAt DateTime  @default(now())
-    updatedAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
     pessoa    Pessoa    @relation(fields: [pessoaId], references: [id])
     pessoaId  Int       @unique
 

@@ -1,7 +1,7 @@
 model Cargo {
     id                  Int     @id @default(autoincrement())
     nome                String
-    descontoPorcentagem Decimal @db.Decimal(5, 2)
+    descontoPermitidoPorcentagem Decimal @db.Decimal(5, 2)
 
     usuarios Usuario[]
 
@@ -33,4 +33,7 @@ model Cargo {
     //Permissões para Tela USUARIO
     permiteAdicionarUsuario Boolean @default(true)
     permiteAlterarUsuario   Boolean @default(true)
+
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
 }

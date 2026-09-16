@@ -9,4 +9,7 @@ model Endereco {
 
     pessoa   Pessoa? @relation(fields: [pessoaId], references: [id])
     pessoaId Int?   
+
+    createdAt DateTime @default(now())
+    updatedAt   DateTime @updatedAt
 }
