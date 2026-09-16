@@ -1,12 +1,12 @@
 model Endereco {
     id              Int     @id @default(autoincrement())
+    CEP             String 
     rua             String
     numero          String?
     pontoReferencia String?
     complemento     String?
     cidade          String
     uf              String
-
     pessoa   Pessoa? @relation(fields: [pessoaId], references: [id])
     pessoaId Int?   
 
