@@ -1,0 +1,13 @@
+enum TipoResidencial{
+    RESIDENCIAL
+    COMERCIAL
+}
+
+model EnderecoPessoa{
+    enderecoId Int @unique
+    pessoaId Int @unique
+    endereco Endereco @relation(fields: [enderecoId], references: [id])
+    pessoa  Pessoa @relation(fields: [pessoaId], references: [id])
+    tipo TipoResidencial @default(RESIDENCIAL)
+    @@id([enderecoId, pessoaId])
+}
