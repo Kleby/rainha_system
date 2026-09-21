@@ -1,11 +1,11 @@
 model Endereco {
     id              Int     @id @default(autoincrement())
-    CEP             String 
+    cep             String @unique 
     rua             String
-    numero          String?
-    pontoReferencia String?
-    complemento     String?
-    cidade          String
+    numero          String @default("S/N")
+    pontoReferencia String @default("-")
+    complemento     String @default("-")
+    cidade          String 
     uf              String
     pessoas     EnderecoPessoa[] 
 
