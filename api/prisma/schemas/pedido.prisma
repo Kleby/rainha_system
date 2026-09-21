@@ -18,6 +18,7 @@ model Pedido {
     status    StatusPedido @default(ABERTO)
     subtotal  Decimal      @db.Decimal(10, 2)
     desconto  Decimal      @db.Decimal(10, 2)
+    acrescimo Decimal       @db.Decimal(10,2)
     total     Decimal      @db.Decimal(10, 2)
     createdAt DateTime     @default(now())
     updatedAt DateTime     @updatedAt
